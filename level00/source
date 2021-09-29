@@ -1,0 +1,19 @@
+int main()
+{
+		char *pass;
+
+		printf("***********\n");
+		printf("* Level 00 *\n");
+		printf("***********\n");
+		printf("Password: ");
+		pass = scanf("%d\n");
+		if (pass == 0x149c) // 5276
+		{
+			printf("\nAuthentifed!");
+			system("/bin/sh");
+		}
+		else
+		{
+			printf("\nInvalid_Password!");
+		}
+}

@@ -1,0 +1,30 @@
+verify_user_name(char *name)
+{
+		dat_wil
+}
+
+verify_user_pass(char *pass)
+{
+		admin
+}
+
+int main()
+{
+	char *name;
+	char *pass;
+
+	puts("********* ADMIN LOGIN PROMPT ***")
+	printf("Enter Username: ")
+	fgets(name, 256);
+	if (!verify_user_name(name))
+		puts("verifying username....\n")
+		puts("nope, incorrect username...\n")
+	else
+	{
+		puts("verifying username....\n")
+		puts("Enter Password: ")
+		fgets(pass, 100)
+		if (!verify_user_pass)
+			puts("nope, incorrect password...\n")
+	}
+}
