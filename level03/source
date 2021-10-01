@@ -1,0 +1,48 @@
+decrypt()
+{
+	if ()
+		system("/bin/sh")
+	else
+		puts("\nInvalid Password")
+}
+
+test()
+{
+	switch:
+	case x:
+		decrypt()
+	case x:
+		decrypt()
+	case x:
+		decrypt()
+	case x:
+		decrypt()
+	case x:
+		decrypt()
+	case x:
+		decrypt()
+	case x:
+		decrypt()
+	case x:
+		decrypt()
+	case x:
+		decrypt()
+	case x:
+		decrypt()
+	case x:
+		decrypt()
+	default:
+		decrypt(rand())
+}
+
+int main()
+{
+	time(0)
+	srand()
+	puts("********************************")
+	puts("*		level03		**")
+	puts("********************************")
+	printf("Password:")
+	scanf("%d")
+	test(à
+}
