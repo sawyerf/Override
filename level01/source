@@ -1,11 +1,13 @@
 verify_user_name(char *name)
 {
-		dat_wil
+	"dat_wil"
+	# Compare name to "dat_wil"
 }
 
 verify_user_pass(char *pass)
 {
-		admin
+	"admin"
+	# Compare pass to "admin"
 }
 
 int main()

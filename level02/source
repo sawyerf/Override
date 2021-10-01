@@ -1,0 +1,36 @@
+int main()
+{
+	FILE *file;
+	char *pass_file;
+
+	file = fopen("/home/users/level03/.pass", "r");
+	if (!file)
+	{
+			fwrite("ERROR: failed to open password file\n");
+			exit(1);
+	}
+	fread(pass_file, 41, file);
+	strcspn();
+	fclose()
+	puts("===== [ Secure Access System v1.0 ] =====")
+	puts("/***************************************\")
+	puts("| You must login to access this system. |")
+	puts("\***************************************/")
+
+	printf("--[ Username: ")
+	fgets (user, 0x64, 0)
+	strcspn()
+
+	printf("--[ Password: ")
+	fgets(pass, 0x64, 0)
+	strcspn()
+	puts("****************************************")
+	if (strncmp(pass_file, pass, 0x29) != 0)
+	{
+		printf(user)
+		puts("does not have access!")
+		exit (1)
+    }
+	printf("Greetings, %s!\n", user)
+	system("/bin/sh")
+}

