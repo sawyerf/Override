@@ -1,48 +1,76 @@
-decrypt()
+decrypt(int arg1)
 {
-	if ()
+//	int ecx = -1;
+//	char edi_1[] = "`sfgQ}|u}|a3~sf"
+//	
+//	while (ecx)
+//	{
+//		if (!(edi_1 != 0))
+//			break;
+//		edi_1 += 1;
+//		ecx -= 1;
+//	}
+//
+//	while (1)
+//	{
+//		if (!(var_2c < eax_3))
+//			break;
+//		ecx + 
+//	}
+
+	???
+	if (???)
 		system("/bin/sh")
 	else
 		puts("\nInvalid Password")
 }
 
-test()
+test(int arg1, int arg2)
 {
-	switch:
-	case x:
-		decrypt()
-	case x:
-		decrypt()
-	case x:
-		decrypt()
-	case x:
-		decrypt()
-	case x:
-		decrypt()
-	case x:
-		decrypt()
-	case x:
-		decrypt()
-	case x:
-		decrypt()
-	case x:
-		decrypt()
-	case x:
-		decrypt()
-	case x:
-		decrypt()
+	int cmp;
+
+	cmp = arg2 - arg1;
+	switch (cmp):
+	case 1:
+		decrypt(cmp)
+	case 2:
+		decrypt(cmp)
+	case 3:
+		decrypt(cmp)
+	case 4:
+		decrypt(cmp)
+	case 5:
+		decrypt(cmp)
+	case 6:
+		decrypt(cmp)
+	case 7:
+		decrypt(cmp)
+	case 8:
+		decrypt(cmp)
+	case 9:
+		decrypt(cmp)
+	case 16:
+		decrypt(cmp)
+	case 17:
+		decrypt(cmp)
+	case 18:
+		decrypt(cmp)
+	case 19:
+		decrypt(cmp)
+	case 20:
+		decrypt(cmp)
+	case 21:
+		decrypt(cmp)
 	default:
 		decrypt(rand())
 }
 
 int main()
 {
-	time(0)
-	srand()
+	srand(time())
 	puts("********************************")
 	puts("*		level03		**")
 	puts("********************************")
 	printf("Password:")
-	scanf("%d")
-	test(à
+	test(scanf("%d"), 0x1337d00d) # 322424845
 }
