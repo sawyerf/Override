@@ -1,0 +1,27 @@
+int main()
+{
+	int i;
+	char *ptr;
+	char *str;
+
+	fget(str);
+	while (1)
+	{
+		int y = -1;
+		int ptr = str;
+		while (y)
+		{
+			ptr++;
+			y--;
+			if (0 != ptr)
+				break;
+		}
+		if (i >= y - 1)
+			break;
+		if (*(str + i) > '@' && *(str + i) <= 'Z')
+			*(str + i) +=  32;
+		i++;
+	}
+	printf(str);
+	exit(0);
+}
