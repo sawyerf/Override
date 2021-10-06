@@ -3,7 +3,7 @@ int main()
 	child = fork()
 	if (child == 0)
 	{
-		prctl(1, 1, ??, ??)
+		prctl(1, 1, var_8, var_4)
 		ptrace(0, 0, 0, 0)
 		puts("Give me some shellcode, k")
 		gets()
@@ -12,7 +12,7 @@ int main()
 	{
 		while (1)
 		{
-			wait()
+			wait(??, 0, var_8, var_4)
 			if (ptrace(3, child, 0x2c, 0) == 0xb)
 			{
 				
