@@ -1,0 +1,24 @@
+int main()
+{
+	child = fork()
+	if (child == 0)
+	{
+		prctl(1, 1, ??, ??)
+		ptrace(0, 0, 0, 0)
+		puts("Give me some shellcode, k")
+		gets()
+	}
+	else
+	{
+		while (1)
+		{
+			wait()
+			if (ptrace(3, child, 0x2c, 0) == 0xb)
+			{
+				
+				puts("no exec() for you");
+				kill(child)
+			}
+			puts("child is exiting...");
+	}
+}
