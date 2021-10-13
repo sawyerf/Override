@@ -1,0 +1,28 @@
+int store_number(int arg1)
+{
+	printf(" Number: ")
+	eax = get_num()
+	print(" Index: ")
+	eax_1 = get_num()
+	if ()
+	{
+		" *** ERROR! ***"}
+		"   This index is reserved for wid"}
+		" *** ERROR! ***"}
+	}
+	if ()
+	{
+	}
+	return eax_6
+}
+
+int read_number(int arg)
+{
+	printf(" Index: ")
+	int num = get_unum()
+	print(" Number at data[%u] is %u\n", num, *((num << 2) + arg1))
+}
+
+int	main()
+{
+}
