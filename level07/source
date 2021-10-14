@@ -25,4 +25,31 @@ int read_number(int arg)
 
 int	main()
 {
+	while ()
+	{
+		memset()
+	}
+	while ()
+	{
+		memset()
+	}
+	puts()
+	while ()
+	{
+		printf()
+		fgets()
+		# Read
+		if ()
+			read_numer()
+		# Store
+		if ()
+			store_number()
+		# Quit
+		if ()
+			return 0
+		if ()
+			printf(" Completed %s command successfully", cmd)
+		else
+			printf(" Failed to do %s command", cmd)
+	}
 }
