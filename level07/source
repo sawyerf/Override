@@ -4,7 +4,7 @@ int store_number(int arg1)
 	eax = get_num()
 	print(" Index: ")
 	eax_1 = get_num()
-	if ()
+	if (eax_1 % 3)
 	{
 		" *** ERROR! ***"}
 		"   This index is reserved for wid"}
