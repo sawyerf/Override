@@ -55,3 +55,4 @@ peda-session-*.txt
 l[a-z]l*
 
 .vscode
+__pycache__
