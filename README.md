@@ -15,7 +15,7 @@
 | level04 | Fork No Exec    | 3v8QLcN5SAhPaZZfEasfmXdwyR59ktDEMAwHF3aN |
 | level05 | Printf Format 2 | h4GtNnaMs2kZFN92ymTr2DcJHAzMfzLW25Ep59mq |
 | level06 | Simple Auth     | GbcPDRgsFK77LNnnuh7QyFYA2942Gp8yKj9KrWD8 |
-| level07 |                 |  |
+| level07 | Jump Shellcode  | 7WJ6jFBzrcjEYXudxnM3kdW7n3qyxR6tk2xGrkSC |
 | level08 |                 |  |
 | level09 |                 |  |
 
