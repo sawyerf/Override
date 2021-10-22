@@ -1,0 +1,67 @@
+int log_wrapper(FILE *arg1, char *str, char *arg3)
+{
+	strcpy(var_118, str)
+	while (rcx != 0)
+	{
+		rdi_1++;
+		rcx--
+		if (rdi_1 == 0)
+			break
+	}
+	while ()
+	{
+	}
+	snprintf(var_118 + rcx_1 - 1, r8, arg3, rcx_1, r8)
+	*(&var_118 + strcspn (&var_118, &data_400d4c)) = 0
+	fprintf(arg1, "LOG: %s\n", &var_118, 0x400d4e)
+	rax_11 = rax ^ *(fsbase + 0x28)
+	if (rax_11 == 0)
+		return rax_11
+}
+
+int main(int argi, char **argv)
+{
+	if (argi != 2)
+		printf("Usage: %s filename\n", argv[0])
+	fd1 = fopen("./backups/.log", "w")
+	if (fd1 == 0)
+	{
+		printf("ERROR: Failed to open %s\n", "./backups/.log");
+		exit(1)
+	}
+	log_wrapper(fd1, "Starting back up: ", argv[1])
+	fd2 = fopen(argv[1], "r")
+	if (fd2 == 0)
+	{
+		printf("ERROR: Failed to open %s\n", "./backups/.log");
+		exit(1)
+	}
+	var_78[] = "./backups/"
+	rdi_2 = var_78
+	while (rcx != 0)
+	{
+		rdi_2++;
+		rcx--;
+		if (rdi_2 == 0)
+			break
+	}
+	strncat(var_78, argv[1], 0x63 - rcx - 1)
+	fd3 = open(var_78, 0xc1, 0x1b0)
+	if (fd3 < 0)
+	{
+		print("ERROR: Failed to open %s%s\n", "./backups/", argv[1])
+		exit(1)
+	}
+	while (1)
+	{
+		c = fgetc(fd2)
+		if (c == 0xff)
+			break
+		write(fd3, c, 1)
+	}
+	log_wrapper(fd1, "Finished back up", argv[1])
+	fclose(fd3)
+	close(fd3)
+	if ((rax ^ *(fsbase + 0x28)) == 0)
+		return 0
+}
