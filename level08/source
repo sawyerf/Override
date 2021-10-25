@@ -33,7 +33,7 @@ int main(int argi, char **argv)
 	fd2 = fopen(argv[1], "r")
 	if (fd2 == 0)
 	{
-		printf("ERROR: Failed to open %s\n", "./backups/.log");
+		printf("ERROR: Failed to open %s\n", argv[1]);
 		exit(1)
 	}
 	var_78[] = "./backups/"
