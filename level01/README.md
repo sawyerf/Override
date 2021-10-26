@@ -1,4 +1,5 @@
 # Level 01
+<a href="/level02"><img align='right' width=20x height=auto src="https://cdn.onlinewebfonts.com/svg/img_68680.png"></img></a>
 
 - En testant des entrée trop longue on voit que la deuxieme entrée peut etre overflow
 <pre>

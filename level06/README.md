@@ -1,4 +1,5 @@
-# Level 07
+# Level 06
+<a href="/level07"><img align='right' width=20x height=auto src="https://cdn.onlinewebfonts.com/svg/img_68680.png"></img></a>
 
 - La premiere condition pour passer est que le premiere argument est une longueur de plus de 5
 <pre>
