@@ -30,7 +30,7 @@ int main()
 		printf(user)
 		puts("does not have access!")
 		exit (1)
-    }
+	}
 	printf("Greetings, %s!\n", user)
 	system("/bin/sh")
 }
