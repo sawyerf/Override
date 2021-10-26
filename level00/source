@@ -1,6 +1,6 @@
 int main()
 {
-		char *pass;
+		int	pass;
 
 		printf("***********\n");
 		printf("* Level 00 *\n");
