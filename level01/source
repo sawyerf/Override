@@ -1,13 +1,35 @@
 verify_user_name(char *name)
 {
-	"dat_wil"
-	# Compare name to "dat_wil"
+	char *check = "dat_wil"
+	int len = 7
+	puts("verifying username....\n")
+	while (len)
+	{
+		c = *check < *name
+		if (*check != *name)
+			break
+		check++
+		name++
+		len--
+	}
+	return (*check != *name && !c - c)
 }
 
 verify_user_pass(char *pass)
 {
-	"admin"
-	# Compare pass to "admin"
+	char *check = "admin"
+	int len = 5
+
+	while (len)
+	{
+		c = *check < *name
+		if (*check != *name)
+			break
+		check++
+		name++
+		len--
+	}
+	return ((*check != *name && !c) - c)
 }
 
 int main()
@@ -18,12 +40,10 @@ int main()
 	puts("********* ADMIN LOGIN PROMPT ***")
 	printf("Enter Username: ")
 	fgets(name, 256);
-	if (!verify_user_name(name))
-		puts("verifying username....\n")
+	if (verify_user_name(name))
 		puts("nope, incorrect username...\n")
 	else
 	{
-		puts("verifying username....\n")
 		puts("Enter Password: ")
 		fgets(pass, 100)
 		if (!verify_user_pass)
