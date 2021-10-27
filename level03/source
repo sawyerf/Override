@@ -1,25 +1,7 @@
 decrypt(int arg1)
 {
-//	int ecx = -1;
-//	char edi_1[] = "`sfgQ}|u}|a3~sf"
-//	
-//	while (ecx)
-//	{
-//		if (!(edi_1 != 0))
-//			break;
-//		edi_1 += 1;
-//		ecx -= 1;
-//	}
-//
-//	while (1)
-//	{
-//		if (!(var_2c < eax_3))
-//			break;
-//		ecx + 
-//	}
-
-	???
-	if (???)
+	do_stuff()
+	if (condition)
 		system("/bin/sh")
 	else
 		puts("\nInvalid Password")
