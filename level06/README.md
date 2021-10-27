@@ -2,6 +2,7 @@
 <a href="/level07"><img align='right' width=20x height=auto src="https://cdn.onlinewebfonts.com/svg/img_68680.png"></img></a>
 
 - La premiere condition pour passer est que le premiere argument est une longueur de plus de 5
+- Pour savoir se que doit etre le deuxieme argument il suffit de break  a la comparaison a la print
 <pre>
 gdb-peda$ disass auth
 Dump of assembler code for function auth:
@@ -18,18 +19,19 @@ Dump of assembler code for function auth:
    0x08048877 <+303>:   leave  
    0x08048878 <+304>:   ret    
 End of assembler dump.
-gdb-peda$ b \*0x080487ba
+gdb-peda$ b *0x080487ba
 Breakpoint 1 at 0x80487ba
-gdb-peda$ b \*0x08048866
+gdb-peda$ b *0x08048866
 Breakpoint 2 at 0x8048866
 gdb-peda$ r < <(echo AAAAAA; echo 999)
 Starting program: /home/alarm/42/override/level06/Ressources/level06 < <(echo AAAAAA; echo 999)
-\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
-\*               level06           \*
-\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
--> Enter Login: \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
-\*\*\*\*\* NEW ACCOUNT DETECTED \*\*\*\*\*\*\*\*
-\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
+***********************************
+*               level06           *
+***********************************
+-> Enter Login:
+***********************************
+***** NEW ACCOUNT DETECTED ********
+************************************
 [-------------------------------------code-------------------------------------]
    0x80487a6 <auth+94>: mov    DWORD PTR [esp+0x4],0x0
    0x80487ae <auth+102>:        mov    DWORD PTR [esp],0x0
@@ -43,6 +45,9 @@ Starting program: /home/alarm/42/override/level06/Ressources/level06 < <(echo AA
 
 Breakpoint 1, 0x080487ba in auth ()
 gdb-peda$ set $eax=0x0
+</pre>
+- La condition au desus empeche les debugger de lancer l'executable on set donc la condition qui l'empeche a 0
+<pre>
 gdb-peda$ c
 [-------------------------------------code-------------------------------------]
    0x804885e <auth+278>:        cmp    eax,DWORD PTR [ebp-0xc]
@@ -60,5 +65,10 @@ gdb-peda$ x $ebp-0x10
 gdb-peda$ x $eax
 0x3e7:  Cannot access memory at address 0x3e7
 </pre>
-- 0x005f0c3a = 6 229 050
-- Le deuxieme argument doit donc etre egale a  6 229 050
+- On voit que donc que l'argument est egale a 0x005f0c3a
+- On le converti donc 0x005f0c3a = 6 229 050
+- Le deuxieme argument doit donc etre egale a 6 229 050
+- On peut donc maintenant creer la commande finale
+```
+(echo AAAAAA; echo 6229050; sleep 0.1; echo 'cat /home/users/level07/.pass') | ./level06
+```
