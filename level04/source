@@ -15,10 +15,10 @@ int main()
 			wait(??, 0, var_8, var_4)
 			if (ptrace(3, child, 0x2c, 0) == 0xb)
 			{
-				
 				puts("no exec() for you");
 				kill(child)
 			}
 			puts("child is exiting...");
+		}
 	}
 }
