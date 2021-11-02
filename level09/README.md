@@ -2,7 +2,7 @@
 
 - On peut overflow la deuxieme entrée
 - On calcule donc l'offset pour pouvoir ecrire par dessus la Return Address
-- La longueur de se qui sera copier est controlé par l'un des caractere de l'username donc on y met que la plus grande valeur \xff
+- La longueur de se qui sera copier est controlé par l'un des caractere de l'username donc on y met que la plus grande valeur \xff dans toute la string
 <pre>
 gdb-peda$ pattern create 300
 'AAA%AAsAABAA$AAnAACAA-AA(AADA...'

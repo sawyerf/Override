@@ -10,9 +10,6 @@ int store_number(int arg1)
 		"   This index is reserved for wid"}
 		" *** ERROR! ***"}
 	}
-	if ()
-	{
-	}
 	return eax_6
 }
 
@@ -25,27 +22,31 @@ int read_number(int arg)
 
 int	main()
 {
+	delete_argv
+	delete_env
+	puts(" ----------------------------------------------------\n " \
+		"  Welcome to wil\'s crappy number storage service!   \n "  \
+		" ----------------------------------------------------\n " \
+		" Commands:                                          \n " \
+		" store - store a number into the data storage    \n " \
+		" read  - read a number from the data storage     \n " \
+		" quit  - exit the program                        \n " \
+		" ----------------------------------------------------\n " \
+		" wil has reserved some storage :>                 \n " \
+		" ----------------------------------------------------\n ")
+
 	while ()
 	{
-		memset()
-	}
-	while ()
-	{
-		memset()
-	}
-	puts()
-	while ()
-	{
-		printf()
-		fgets()
+		printf("Input command: ")
+		fgets(str, 0x14)
 		# Read
-		if ()
+		if (isread)
 			read_numer()
 		# Store
-		if ()
+		if (isstore)
 			store_number()
 		# Quit
-		if ()
+		if (isquit)
 			return 0
 		if ()
 			printf(" Completed %s command successfully", cmd)

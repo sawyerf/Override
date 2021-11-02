@@ -2,7 +2,7 @@
 <a href="/level08"><img align='right' width=20x height=auto src="https://cdn.onlinewebfonts.com/svg/img_68680.png"></img></a>
 
 - On peut ecrire partout dans la memoire avec store sauf tout les 3 itterations
-- Il suffit donc d'ecrire par dessus fgets, l'addresse vers la quelle on redirige
+- Il suffit donc de rediriger fgets vers un shellcode
 <pre>
 objdump -R ./level07 
 
@@ -25,10 +25,9 @@ OFFSET   TYPE              VALUE
 0804a024 R\_386\_JUMP\_SLOT   \_\_isoc99\_scanf@GLIBC\_2.7
 </pre>
 
-- On ne peut pas rediriger vers l'environnement ou les argument car il sont supprimé
+- On ne peut pas rediriger vers l'environnement ni vers les arguments car il sont supprimé
 - Il faut donc rediriger vers le tableau sur le quelle ont ecrit
-- Dans le ltrace il n'y a pas l'addresse de l'index 1 du tableau
-- Pour la connaitre il suffit donc de connaitre la difference entre le retour de fgets et l'index 1 du tableau puis de faire le calcul
+- L'addresse du tableau ne figurant pas a dans le ltrace. Il faut donc la calculer en trouvant la difference en tre un variable fixe et le premiere index de notre tableau
 - Dans gdb on print donc ces deux addresses
 <pre>
 (gdb) b *0x08048887
@@ -74,8 +73,8 @@ Breakpoint 2, 0x080486cb in store_number ()
  - pour 1: 0xffffd5e8 - 0xffffd458 = 0x190 = 400
  - pour -2: 0xffffd5e8 - 0xffffd44c = 0x19c = 412
 - Se qui donne:
- - L'adresse de -1 est: 0xffffd608 - 0x190 = 0xffffd478
- - L'index de l'addresse de fgets est: ((0x0804a00c - (0xffffd608 - 0x19c)) / 4) - 2 = -1040108826
-- Apres j'ai créé un programme qui modifie un shellcode en lui ajouter des jump se qui le permet de sauté les index ou je ne peut pas ecrire
-- Puis qui le converti en entrée pour le programme
-- Et voila il suffit apres cela de mettre l'entrée dans l'executable
+ - tab[1]: 0xffffd608 - 0x190 = 0xffffd478
+ - tab[x] = Address fgets = ((0x0804a00c - (0xffffd608 - 0x19c)) / 4) - 2 = -1040108826
+- Apres j'ai créé un programme qui modifie un shellcode en lui ajouter des jump se qui lui permet de jump tout les 3 index
+- Puis qui le converti en entrée compatible avec programme
+- Et voila il suffit apres cela d'executer le tout

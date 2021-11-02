@@ -1,4 +1,4 @@
-verify_user_name(char *name)
+int verify_user_name(char *name)
 {
 	char *check = "dat_wil"
 	int len = 7
@@ -15,7 +15,7 @@ verify_user_name(char *name)
 	return (*check != *name && !c - c)
 }
 
-verify_user_pass(char *pass)
+int verify_user_pass(char *pass)
 {
 	char *check = "admin"
 	int len = 5

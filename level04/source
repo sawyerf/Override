@@ -6,7 +6,7 @@ int main()
 		prctl(1, 1, var_8, var_4)
 		ptrace(0, 0, 0, 0)
 		puts("Give me some shellcode, k")
-		gets()
+		gets(str)
 	}
 	else
 	{

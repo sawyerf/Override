@@ -46,8 +46,8 @@ int set_msg(char *arg1)
 
 int handle_msg()
 {
-	set_username(var_c8)
-	set_msg(var_c8)
+	set_username(arg1)
+	set_msg(arg1)
 	return puts(">: Msg sent!")
 }
 

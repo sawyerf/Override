@@ -1,8 +1,8 @@
 # Level 06
 <a href="/level07"><img align='right' width=20x height=auto src="https://cdn.onlinewebfonts.com/svg/img_68680.png"></img></a>
 
-- La premiere condition pour passer est que le premiere argument est une longueur de plus de 5
-- Pour savoir se que doit etre le deuxieme argument il suffit de break  a la comparaison a la print
+- La premiere condition pour passer est que le premiere argument soit d'une longueur de plus de 5
+- Pour savoir se que doit etre le deuxieme argument. Il suffit de break a la comparaison puis de print la valeur comparé a notre deuxieme argument
 <pre>
 gdb-peda$ disass auth
 Dump of assembler code for function auth:
@@ -65,10 +65,10 @@ gdb-peda$ x $ebp-0x10
 gdb-peda$ x $eax
 0x3e7:  Cannot access memory at address 0x3e7
 </pre>
-- On voit que donc que l'argument est egale a 0x005f0c3a
-- On le converti donc 0x005f0c3a = 6 229 050
+- On voit que donc que l'argument doit etre egale à 0x005f0c3a
+- On converti donc 0x005f0c3a = 6 229 050
 - Le deuxieme argument doit donc etre egale a 6 229 050
-- On peut donc maintenant creer la commande finale
+- La commande assemble donne ceci
 ```
 (echo AAAAAA; echo 6229050; sleep 0.1; echo 'cat /home/users/level07/.pass') | ./level06
 ```

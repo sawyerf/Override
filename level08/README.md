@@ -10,12 +10,11 @@ ERROR: Failed to open ./backups//home/users/level09/.pass
 - On n'a pas les droit dans le home pour creer les dossiers
 - Donc il suffit de creer les dossiers dans /tmp/
 ```
-$> cd /tmp/
-$> mkdir -p ./backups//home/users/level09/
+cd /tmp/
+mkdir -p ./backups//home/users/level09/
 ```
-- Puis de executer l'executable
+- Puis d'executer l'executable
 ```
-$> ~/level08 /home/users/level09/.pass
-$> cat backups/home/users/level09/.pass 
-fjAwpJNs2vvkFLRebEvAQ2hFZ4uQBWfHRsP62d8S
+~/level08 /home/users/level09/.pass
+cat backups/home/users/level09/.pass 
 ```

