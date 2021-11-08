@@ -25,6 +25,10 @@
 export FILE=level02; mkdir $FILE; cd $FILE; touch source flag README.md; mkdir Ressources; cd Ressources; scp -P 4242 $FILE@192.168.1.116:/home/users/$FILE/$FILE .
 ```
 
+```
+scp -P 4242 -r .peda level00@192.168.1.152:/tmp/peda
+```
+
 ### Overflow
 #### Basic
 ```
