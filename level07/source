@@ -9,7 +9,11 @@ int store_number(int arg1)
 		" *** ERROR! ***"}
 		"   This index is reserved for wid"}
 		" *** ERROR! ***"}
+		eax_6 = 1
 	}
+	if (...)
+		eax_1 + arg1 = eax # 0x80486cb
+		eax_6 = 0
 	return eax_6
 }
 
@@ -38,7 +42,7 @@ int	main()
 	while ()
 	{
 		printf("Input command: ")
-		fgets(str, 0x14)
+		fgets(str, 0x14) # 0x08048887
 		# Read
 		if (isread)
 			read_numer()
